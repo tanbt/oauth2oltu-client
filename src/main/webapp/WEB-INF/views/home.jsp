@@ -37,9 +37,7 @@
             <div class="social-login">
             <p>- - - - - - - - - - - - - Sign In With - - - - - - - - - - - - - </p>
     		<ul>
-            <li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
-            <li><a href=""><i class="fa fa-google-plus"></i> Google+</a></li>
-            <li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
+            <li style="width: 100%"><a href=""><i class="fa fa-facebook"></i> My OAuth 2 </a></li>
             </ul>
             </div>
             <div class="clearfix"></div>
