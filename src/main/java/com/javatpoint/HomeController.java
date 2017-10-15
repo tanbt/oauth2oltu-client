@@ -27,7 +27,7 @@ public class HomeController {
         // todo: check oauth query parameter
         // todo: get access code then exchange to access token
         // todo: get resource
-        return new ModelAndView("login", "msg", "Hello Login from Oauth");
+        return new ModelAndView("welcome", "msg", "Hello Login from Oauth");
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
