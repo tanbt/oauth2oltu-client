@@ -18,6 +18,7 @@ public class HomeController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView getLogin() {
+        //check oauth query parameter
         return new ModelAndView("login", "msg", "Hello First Spring");
     }
 

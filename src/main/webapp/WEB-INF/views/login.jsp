@@ -31,7 +31,7 @@
 							<p>- - - - - - - - - - - - - Sign In With - - - - - - - - - -
 								- - -</p>
 							<ul>
-								<li style="width: 100%"><a href=""><i
+								<li class="oauth-button" style="width: 100%"><a class="oauth-button" href="#"><i
 										class="fa fa-facebook"></i> My OAuth 2 </a></li>
 							</ul>
 						</div>
