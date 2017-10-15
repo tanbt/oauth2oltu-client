@@ -22,6 +22,14 @@ public class HomeController {
         return new ModelAndView("login", "msg", "Hello First Spring");
     }
 
+    @RequestMapping(value = "/loginByOauth", method = RequestMethod.GET)
+    public ModelAndView getLoginOauth() {
+        // todo: check oauth query parameter
+        // todo: get access code then exchange to access token
+        // todo: get resource
+        return new ModelAndView("login", "msg", "Hello Login from Oauth");
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView postLogin(HttpServletRequest request) {
         String userName = request.getParameter("username");
