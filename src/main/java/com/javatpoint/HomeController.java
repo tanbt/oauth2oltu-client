@@ -26,6 +26,9 @@ public class HomeController {
     private static final String HOST_TOKEN_URL =
             "http://localhost:8080/oauth/token";
 
+    private static final String USER_RESOURCE_ENDPOINT =
+            "http://localhost:8080/oauth/user";
+
     private static final String CLIENT_REDIRECT_URL =
             "http://localhost:8081/loginByOauth";
 
@@ -55,8 +58,13 @@ public class HomeController {
             }
             String accessToken = respondedJson.get("access_token").getAsString();
 
+            JsonObject userResourceData = getUserResource(accessToken);
+            if (userResourceData == null) {
+                return new ModelAndView("welcome", "msg", "Cannot get user" +
+                        " data");
+            }
 
-            return new ModelAndView("welcome", "msg", accessToken);
+            return new ModelAndView("welcome", "msg", userResourceData);
         } else {
             return new ModelAndView("welcome", "msg", "Missing " +
                     "authentication code");
@@ -89,6 +97,19 @@ public class HomeController {
                                     .add("client_id", CLIENT_ID)
                                     .add("client_secret", CLIENT_SECRET)
                                     .build())
+                    .execute().returnContent().asString();
+            JsonParser parser = new JsonParser();
+            return parser.parse(response).getAsJsonObject();
+        } catch (IOException e) {
+            LOGGER.warn(e.getMessage());
+            return null;
+        }
+    }
+
+    private JsonObject getUserResource(String accessToken) {
+        try {
+            String response = Request.Get(USER_RESOURCE_ENDPOINT)
+                    .addHeader("Authorization", "Bearer " + accessToken)
                     .execute().returnContent().asString();
             JsonParser parser = new JsonParser();
             return parser.parse(response).getAsJsonObject();
